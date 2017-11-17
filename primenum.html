@@ -1,8 +1,12 @@
-<!-- <div ng-controller="PrimeNumCtrl"></div>
-<form action="" method="post" id="prime">
-	<div>
-		<input type="text" id="number" name="number" placeholder="Number" />
-		<input type="submit" ng-model= "submit" value="Calculate" />
-	</div>
-</form>
-<div id="output"></div> -->
+<div ng-controller="PrimeNumCtrl"></div>
+<!-- <input id="theNumber" type="text" ng-model="input" placeholder="please enter a number" />
+<button id="findBtn" ng-click="findPrimes()">Find Factors</button>
+<div class="title">Factors:</div>
+<div id="output">{{output}}</div> -->
+
+
+<p>{{ savedText }}</p>
+<input id="theNumber" type="text" ng-model="input" placeholder="please enter a number" />
+<button id="findBtn" ng-click="findPrimes()">Find Factors</button>
+<div class="title">Factors:</div>
+<div id="output">{{output}}</div>

@@ -1,55 +1,41 @@
-// var app = angular.module('tacoCat');
-// app.controller('PrimeNumCtrl', (function() {
-
-// 	var isPrimeNumber = function( number ) {
-// 		if ( number == 1 || number == 2 ) {
-// 			return true;
-// 		}
-// 		for ( var i = 2; i < number; i++ ) {
+var app = angular.module('tacoCat');
+app.controller('PrimeNumCtrl', function ($scope, RedditFactory) {
+	   $scope.savedText = RedditFactory.savedText;
 	
-// 			if ( number % i == 0 ) {
-// 				return false;
-// 			}
-// 		} 
-// 		return true;
-// 	};
+	   //set max value
+	   var CAP = 1000000000000;
+	   
+	   //get elements by ids
+	   
+	   //set max lengths and placeholder    
+	   // input.setAttribute('maxlength', CAP.toString().length);
+	   // input.setAttribute('placeholder', 'Enter a number less than ' + CAP);
 	
-// 	var unique = function( arr ) {
-// 		return arr.reduce(function( p, c ) {
-// 			if ( p.indexOf( c ) < 0 ) {
-// 				p.push( c );	
-// 			}
-// 			return p; 
-// 		}, []);
-// 	};
-
-// 	var nextPrime = function( number ) {
-// 		var n;
-// 		if( number % 2 == 0 ) {
-// 			number++;
-// 		}
-		
-// 		for( n = number; !isPrimeNumber( n ); n += 2 ) {
-			
-// 		}
-// 		return n;
-// 	};
+	   //set empty array to hold factors returned for i
+	   function getAllFactorsFor(remainder) {
+		   var factors = [], i;
+		   
+		   //run the loop using modulus operator to get factorization
+		   for (i = 2; i <= remainder; i++) {
+			   while ((remainder % i) === 0) {
+				   factors.push(i);
+				   remainder /= i;
+			   }
+		   }
+		   
+		   //return your stuff in the array
+		   return factors;
+	   }
 	
-// 	document.addEventListener( "DOMContentLoaded", function() {
-// 		var form = document.querySelector( "#prime" ),
-// 			output = document.querySelector( "#output" );
-			
-// 		form.addEventListener( "submit", function( e ) {
-// 			e.preventDefault();
-// 			var n = document.querySelector( "#number" ).value;
-// 			var text = [];
-// 			for( var i = 0; i < n; ++i ) {
-// 				text.push( nextPrime( i ) );	
-// 			}
-// 			output.innerHTML = unique( text ).join( " " );
-// 		}, false);
-		
-// 	});
-	
-	
-// })());
+	   
+	   $scope.findPrimes = function (event) {
+		   var val = + $scope.input,
+			   result;
+		   
+		   if (isNaN(val) || val > CAP) {
+			   return;
+		   }
+		   
+		   $scope.output = getAllFactorsFor(val).join(', ');
+	   }
+	});
