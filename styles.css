@@ -15,10 +15,15 @@ nav {
 	border: 1px solid grey;
 	border-radius: 5px;
    }
-   div ~ img {
-	float: left;
-   }
-   
-   h4.ng-binding, p.ng-binding {
-	text-align: center;
-   }
+  
+   img {
+    padding-top: 15px;
+  }
+  
+  h4 {
+    padding-left: 60px;
+  }
+
+  logo {
+  width: 100%;
+  }
